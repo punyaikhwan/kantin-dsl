@@ -58,16 +58,13 @@ pelanggan.buat {
 		tahu 20
 		sayur_bayam 4
 	}
-	println "Harga Bayar: "+ hitung()
-	println "Ketersediaan: " + tempatMakan.ketersediaan
+	hitung()
 	daftarBeli {
 		nasi 1
 		tahu 3
 		sayur_bayam 4
 		bungkus false
 	}
-	println "Harga Bayar: "+ hitung()
-	println "Ketersediaan: " + tempatMakan.ketersediaan
+	hitung()
 	pulang()
-	println "Ada yang pulang, ketersediaan: " + tempatMakan.ketersediaan
 }

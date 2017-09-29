@@ -42,10 +42,31 @@ class Pelanggan {
     }
 
 	def hitung() {
+		//Buat struk pembayaran
+		println "STRUK MAKAN------------------------------------------"
+		def i = 0
+		println "No. | Nama item    | Kuantitas | Harga satuan | Harga"
+		println "====================================================="
 		hargaTotal = 0
 		for (item in daftarItem) {
 			for (menu in DaftarMenu.menus) {
 				if (item.nama == menu.nama) {
+					i++
+					print i+"   | "+item.nama
+					for (def j = item.nama.length(); j< 13; j++) {
+						print " "
+					}
+					
+					print "| "+item.kuantitas
+					for (def j = item.kuantitas.toString().length(); j<10; j++) {
+						print " "
+					}
+
+					print "| "+menu.harga
+					for (def j = menu.harga.toString().length(); j<13; j++) {
+						print " "
+					}
+					println "| "+item.kuantitas*menu.harga
 					hargaTotal += item.kuantitas*menu.harga
 				}
 			}
@@ -53,8 +74,16 @@ class Pelanggan {
 		daftar[this.index].put('harga', hargaTotal)
 		this.index++
 		daftarItem = []
+		println"----------------------------------------------------+"
+		print "Total"
+		def totSpace = 47 -hargaTotal.toString().length() 
+		for (def j=0; j<totSpace; j++) {
+			print " "
+		}
+		println hargaTotal+"\n"
 		if (!this.isBungkus) {
 			tempatMakan.kurang()
+			println "Pelanggan makan di tempat. Ketersediaan tempat makan = "+tempatMakan.ketersediaan+"\n\n"
 		}
 		return hargaTotal
 	}
@@ -65,6 +94,7 @@ class Pelanggan {
 
 	def pulang() {
 		tempatMakan.tambah()
+		println "Satu pelanggan selesai dan pergi. Ketersediaan tempat makan = "+tempatMakan.ketersediaan+"\n\n"
 	}
 
 	def riwayatPembelian() {
