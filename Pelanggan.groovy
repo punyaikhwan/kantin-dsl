@@ -1,9 +1,13 @@
 import DaftarMenu
+import TempatMakan
+
 class Pelanggan {
 	public static def daftar = []
 	def daftarItem = []
 	def index = 0
 	def hargaTotal = 0
+	def isBungkus = false
+	TempatMakan tempatMakan = new TempatMakan()
 	
 	def static buat(closure) {
 		 Pelanggan pelanggan= new Pelanggan()
@@ -13,6 +17,7 @@ class Pelanggan {
 	}
 
 	def daftarBeli(clo) {
+		isBungkus = false
 		clo()
 		daftar << [items: daftarItem]
 	}
@@ -32,6 +37,7 @@ class Pelanggan {
     }
 
 	def hitung() {
+		hargaTotal = 0
 		for (item in daftarItem) {
 			for (menu in DaftarMenu.menus) {
 				if (item.nama == menu.nama) {
@@ -41,7 +47,19 @@ class Pelanggan {
 		}
 		daftar[this.index].put('harga', hargaTotal)
 		this.index++
+		daftarItem = []
+		if (!this.isBungkus) {
+			tempatMakan.kurang()
+		}
 		return hargaTotal
+	}
+
+	def bungkus(boolean isBungkus) {
+		this.isBungkus = isBungkus
+	}
+
+	def pulang() {
+		tempatMakan.tambah()
 	}
 
 	def riwayatPembelian() {
