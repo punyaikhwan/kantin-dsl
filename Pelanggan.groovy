@@ -17,16 +17,19 @@ class Pelanggan {
 		daftar << [items: daftarItem]
 	}
 
-	def tambahItem(String makanan, int kuantitas) {
-		daftarItem << [nama:makanan, kuantitas:kuantitas]
-		def i = 0
-		for (menu in DaftarMenu.menus) {
-			if (makanan == menu.nama) {
-				DaftarMenu.menus[i].kuantitas -= kuantitas
-			}
-			i++
-		}
-	}
+	def methodMissing(String methodName, args) {
+        int i = 0
+        boolean found = false
+        while (found == false && i != DaftarMenu.menus.size()) {
+        	if (DaftarMenu.menus[i].nama == methodName) {
+        		found = true
+        		DaftarMenu.menus[i].kuantitas -= args[0]
+        	} else {
+        		i++
+        	}
+        }
+		daftarItem << [nama:methodName, kuantitas:args[0]]
+    }
 
 	def hitung() {
 		for (item in daftarItem) {

@@ -13,12 +13,11 @@ stok.buat {
 		bayam 10
 		beras 10
 	}
-	println cekStokBahan()
 }
 
 menu.buat {
 	masak {
-		nama "Nasi"
+		nama "nasi"
 		kuantitas 10
 		harga 3000
 		bahan {
@@ -26,7 +25,7 @@ menu.buat {
 		}
 	}
 	masak {
-		nama "Tahu"
+		nama "tahu"
 		kuantitas 10
 		harga 500
 		bahan {
@@ -34,7 +33,7 @@ menu.buat {
 		}
 	}
 	masak {
-		nama "Sayur Bayam"
+		nama "sayur_bayam"
 		kuantitas 10
 		harga 2000
 		bahan {
@@ -47,9 +46,9 @@ menu.buat {
 
 pelanggan.buat {
 	daftarBeli {
-		tambahItem("Nasi", 1)
-		tambahItem("Tahu", 2)
-		tambahItem("Sayur", 1)
+		nasi 1
+		tahu 3
+		sayur_bayam 4
 	}
-	hitung()
+	println "Harga Bayar : "+ hitung()
 }
