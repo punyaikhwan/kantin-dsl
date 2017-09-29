@@ -22,6 +22,9 @@ Disusun oleh:
 **Run Contoh Program**
 > groovy kantin.groovy
 
+Contoh bahasa yang dibuat silakan cek file kantin.groovy
+***
+
 **Kantin**
 
 Kantin adalah sarana untuk menjual makanan. Manusia membutuhkan makanan untuk sumber energi, zat pembangun, dan pengatur tubuh agar tubuh dapat tetap beroperasi dengan optimal. Cara manusia mendapatkan makanan, antara lain:
