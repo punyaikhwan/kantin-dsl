@@ -14,6 +14,8 @@ stok.buat {
 		bawang_putih 10
 		bayam 10
 		beras 10
+		tahu 20
+		garam 10
 	}
 }
 
@@ -53,7 +55,7 @@ menu.buat {
 pelanggan.buat {
 	daftarBeli {
 		nasi 1
-		tahu 3
+		tahu 20
 		sayur_bayam 4
 	}
 	println "Harga Bayar: "+ hitung()

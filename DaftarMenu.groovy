@@ -15,11 +15,10 @@ class DaftarMenu {
 	}
 
 	def masak(clo) {
-		clo()
-		//tambah ke daftar menu
-		menus << [nama: this.nama, kuantitas: this.kuantitas, harga:this.harga]
-		daftarBahanTerpakai = []
-
+		if (clo() == 0) {
+			//tambah ke daftar menu
+			menus << [nama: this.nama, kuantitas: this.kuantitas, harga:this.harga]	
+		}
 	}
 
 	def methodMissing(String methodName, args) {
@@ -28,7 +27,14 @@ class DaftarMenu {
         while (found == false && i != StokBahan.bahans.size()) {
         	if (StokBahan.bahans[i].nama == methodName) {
         		found = true
-        		StokBahan.bahans[i].kuantitas += args[0]
+        		if (StokBahan.bahans[i].kuantitas >= args[0]) {
+        			StokBahan.bahans[i].kuantitas -= args[0]
+        			return 0	
+        		} else {
+        			println methodName+" hanya tersisa "+StokBahan.bahans[i].kuantitas+"."
+        			println nama+" batal dimasak."
+        			return -1
+        		}
         	} else {
         		i++
         	}
@@ -47,7 +53,7 @@ class DaftarMenu {
 		this.harga = harga
 	}
 	def bahan(clo) {
-		clo()
+		return clo()
 	}
 
 	def cekStokMenu() {

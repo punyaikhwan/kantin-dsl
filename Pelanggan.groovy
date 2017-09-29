@@ -28,12 +28,17 @@ class Pelanggan {
         while (found == false && i != DaftarMenu.menus.size()) {
         	if (DaftarMenu.menus[i].nama == methodName) {
         		found = true
-        		DaftarMenu.menus[i].kuantitas -= args[0]
+        		if (DaftarMenu.menus[i].kuantitas >= args[0]) {
+        			DaftarMenu.menus[i].kuantitas -= args[0]
+        			daftarItem << [nama:methodName, kuantitas:args[0]]	
+        		} else {
+        			println methodName+" tersisa "+DaftarMenu.menus[i].kuantitas+" saja. Beli "+methodName+" dibatalkan."
+        		}
+        		
         	} else {
         		i++
         	}
         }
-		daftarItem << [nama:methodName, kuantitas:args[0]]
     }
 
 	def hitung() {
