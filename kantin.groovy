@@ -1,14 +1,48 @@
 import DaftarMenu
 import Pelanggan
+import StokBahan
 
 def menu = new DaftarMenu()
 def pelanggan = new Pelanggan()
+def stok = new StokBahan()
+
+stok.buat {
+	tambahStok{
+		bawang_merah 10
+		bawang_putih 10
+		bayam 10
+		beras 10
+	}
+	println cekStokBahan()
+}
 
 menu.buat {
-	tambahMenu("Donat", 40, 5000)
-	tambahMenu("Nasi", 20, 4000)
-	tambahMenu("Tahu", 10, 500)
-	tambahMenu("Sayur", 10, 2000)
+	masak {
+		nama "Nasi"
+		kuantitas 10
+		harga 3000
+		bahan {
+			beras 5
+		}
+	}
+	masak {
+		nama "Tahu"
+		kuantitas 10
+		harga 500
+		bahan {
+			tahu 10
+		}
+	}
+	masak {
+		nama "Sayur Bayam"
+		kuantitas 10
+		harga 2000
+		bahan {
+			bayam 5
+			garam 3
+			bawang_merah 10
+		}
+	}
 }
 
 pelanggan.buat {
@@ -18,8 +52,4 @@ pelanggan.buat {
 		tambahItem("Sayur", 1)
 	}
 	hitung()
-}
-
-pelanggan.buat {
-	print riwayatPembelian()
 }
