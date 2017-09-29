@@ -317,13 +317,13 @@ Penjelasan:
 
 **Sequence Diagram : Pembayaran Setelah Hidangan Dikonsumsi**
 
- ![alt text](https://raw.githubusercontent.com/punyaikhwan/kantin-dsl/master/images/sequence%20diagram%20bayar%20akhir.png)
+ ![alt text](https://raw.githubusercontent.com/punyaikhwan/kantin-dsl/master/images/sequence%20diagram%20bayar%20akhir.PNG)
 
 Pelanggan memesan hidangan ke pelayan. Pelayan lalu akan menyiapkan hidangan (jika tersedia). Lalu, pelanggan makan di tempat , dan melakukan pembayaran. Pembayaran dilakukan setelah pelanggan selesai makan.
 
 **Sequence Diagram : PembayaranSetelah Hidangan Dipesan**
 
- ![alt text](https://raw.githubusercontent.com/punyaikhwan/kantin-dsl/master/images/sequence%20diagram%20bayar%20awal.png)
+ ![alt text](https://raw.githubusercontent.com/punyaikhwan/kantin-dsl/master/images/sequence%20diagram%20bayar%20awal.PNG)
 
  Setelah pelanggan melakukan pemesanan ke pelayan, pelanggan harus membayar terlebih dahulu. Setelah pembayaran, pesanan baru diproses , lalu pelanggan mendapatkan makanan yang dipesan.
 
