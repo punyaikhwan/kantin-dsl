@@ -4,6 +4,7 @@ import TempatMakan
 class Pelanggan {
 	public static def daftar = []
 	def daftarItem = []
+	def copyDaftarItem = []
 	def index = 0
 	def hargaTotal = 0
 	def isBungkus = false
@@ -42,13 +43,40 @@ class Pelanggan {
     }
 
 	def hitung() {
+		hargaTotal = 0
+		for (item in daftarItem) {
+			for (menu in DaftarMenu.menus) {
+				if (item.nama == menu.nama) {
+					hargaTotal += item.kuantitas*menu.harga
+				}
+			}
+		}
+		daftar[this.index].put('harga', hargaTotal)
+		this.index++
+		copyDaftarItem = daftarItem
+		daftarItem = []
+		if (!this.isBungkus) {
+			tempatMakan.kurang()
+		}
+		return hargaTotal
+	}
+
+	def bungkus(boolean isBungkus) {
+		this.isBungkus = isBungkus
+	}
+
+	def pulang() {
+		tempatMakan.tambah()
+	}
+
+	def buatStruk() {
 		//Buat struk pembayaran
 		println "STRUK MAKAN------------------------------------------"
 		def i = 0
 		println "No. | Nama item    | Kuantitas | Harga satuan | Harga"
 		println "====================================================="
 		hargaTotal = 0
-		for (item in daftarItem) {
+		for (item in copyDaftarItem) {
 			for (menu in DaftarMenu.menus) {
 				if (item.nama == menu.nama) {
 					i++
@@ -71,7 +99,6 @@ class Pelanggan {
 				}
 			}
 		}
-		daftar[this.index].put('harga', hargaTotal)
 		this.index++
 		daftarItem = []
 		println"----------------------------------------------------+"
@@ -81,22 +108,7 @@ class Pelanggan {
 			print " "
 		}
 		println hargaTotal+"\n"
-		if (!this.isBungkus) {
-			tempatMakan.kurang()
-			println "Pelanggan makan di tempat. Ketersediaan tempat makan = "+tempatMakan.ketersediaan+"\n\n"
-		}
-		return hargaTotal
 	}
-
-	def bungkus(boolean isBungkus) {
-		this.isBungkus = isBungkus
-	}
-
-	def pulang() {
-		tempatMakan.tambah()
-		println "Satu pelanggan selesai dan pergi. Ketersediaan tempat makan = "+tempatMakan.ketersediaan+"\n\n"
-	}
-
 	def riwayatPembelian() {
 		return daftar
 	}

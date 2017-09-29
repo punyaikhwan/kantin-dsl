@@ -66,5 +66,7 @@ pelanggan.buat {
 		bungkus false
 	}
 	hitung()
+	buatStruk()
 	pulang()
+	println "Satu pelanggan selesai dan pergi. Ketersediaan tempat makan = "+tempatMakan.ketersediaan+"\n\n"
 }
